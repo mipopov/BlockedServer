@@ -1,0 +1,16 @@
+CC=g++ -std=c++11
+CFLAGS=-c
+
+all: client
+
+client: client.o student.o
+	$(CC) client.o student.o -o client
+
+student.o: student.cpp student.h
+	$(CC) $(CFLAGS) student.cpp
+
+client.o: client.cpp
+	$(CC) $(CFLAGS) client.cpp
+
+clean:
+	rm -f *.o client

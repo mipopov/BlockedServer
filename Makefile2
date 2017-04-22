@@ -1,0 +1,28 @@
+all: request
+
+request: requests.o parse.o select.o student.o insrt.o del.o update.o
+	g++ requests.o parse.o select.o student.o insrt.o del.o update.o -o request
+
+pars.o: parse.h parse.cpp
+	g++ -c pars.cpp
+
+select.o: select.h select.cpp
+	g++ -c select.cpp
+
+student.o: student.h student.cpp
+	g++ -c student.cpp
+
+insrt.o: insrt.h insrt.cpp
+	g++ -c insrt.cpp
+
+del.o: del.h del.cpp
+	g++ -c del.cpp
+
+update.o: update.h update.cpp
+	g++ -c update.cpp
+
+requests.o: requests.cpp parse.cpp select.cpp insrt.cpp student.cpp del.cpp
+	g++ -c requests.cpp
+
+clean:
+	rm -f *.o request

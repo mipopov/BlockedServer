@@ -1,0 +1,27 @@
+CC=g++ -std=c++11
+CFLAGS=-c
+
+all: server
+
+server: server.o student.o parse.o select.o insrt.o del.o update.o
+	$(CC) server.o student.o parse.o select.o insrt.o del.o update.o -o server
+
+student.o: student.cpp student.h
+	$(CC) $(CFLAGS) student.cpp
+
+parse.o: parse.cpp parse.h
+	$(CC) $(CFLAGS) parse.cpp
+
+select.o: select.cpp select.h
+	$(CC) $(CFLAGS) select.cpp
+insrt.o: insrt.cpp insrt.h
+	$(CC) $(CFLAGS) insrt.cpp
+del.o: del.cpp del.h
+	$(CC) $(CFLAGS) del.cpp
+update.o: update.cpp update.h
+	$(CC) $(CFLAGS) update.cpp
+server.o: server.cpp
+	$(CC) $(CFLAGS) server.cpp
+
+clean:
+	rm -f *.o server
